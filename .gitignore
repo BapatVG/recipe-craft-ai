@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# SQLite databases
+*.sqlite3
+*.db
+# We are ignoring cookbook.db so that the demo version deployed on Render doesn't overwrite anything in the repo
+
+# Streamlit
+.streamlit/
+
+# macOS
+.DS_Store
+
+# Temporary output files
+recipe_output.md
+recipe_image_output.md
+code_snippets/
+app_snapshots/
