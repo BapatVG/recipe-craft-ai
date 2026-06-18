@@ -2,7 +2,6 @@
 
 Recipe Craft AI is an advanced, multilingual, AI-powered culinary assistant built with Streamlit and the Google Gemini API. It transforms your available ingredients, food cravings, or even images of your fridge into beautifully crafted, highly detailed recipes. 
 
-![Recipe Craft AI Demo](./app_snapshots/main_interface_mockup_1779608022742.png)
 
 Whether you are a beginner looking to cook something quick or an advanced home chef seeking inspiration, Recipe Craft AI guides you through the entire process with beautiful visuals, step-by-step cooking modes, and an interactive AI Chef Chat.
 
@@ -22,13 +21,6 @@ Whether you are a beginner looking to cook something quick or an advanced home c
 - **🖨️ Export Options:** Download your recipe as a beautifully formatted PDF.
 - **📊 Nutritional Macros:** Get estimated Calories, Protein, Carbs, and Fat for every generated meal.
 
-## 📸 Screenshots
-
-| Recipe Generator | Beautiful Recipe Cards |
-| :---: | :---: |
-| ![Generator](./app_snapshots/main_interface_mockup_1779608022742.png) | ![Recipe Card](./app_snapshots/recipe_card_mockup_1779608038423.png) |
-| **Visual Selection Mode** | **My Cookbook** |
-| ![Visual Selection](./app_snapshots/visual_selection_mockup_1779608070883.png) | ![Cookbook](./app_snapshots/my_cookbook_mockup_1779608054913.png) |
 
 ## 🏗️ System Architecture
 
