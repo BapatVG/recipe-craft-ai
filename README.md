@@ -2,6 +2,9 @@
 
 Recipe Craft AI is an advanced, multilingual, AI-powered culinary assistant built with Streamlit and the Google Gemini API. It transforms your available ingredients, food cravings, or even images of your fridge into beautifully crafted, highly detailed recipes. 
 
+![Recipe Craft AI Demo](./assets/demo.gif)
+*(Please add a demo GIF of your app here!)*
+
 Whether you are a beginner looking to cook something quick or an advanced home chef seeking inspiration, Recipe Craft AI guides you through the entire process with beautiful visuals, step-by-step cooking modes, and an interactive AI Chef Chat.
 
 ## ✨ Key Features
@@ -19,6 +22,48 @@ Whether you are a beginner looking to cook something quick or an advanced home c
 - **📖 My Cookbook:** Save your favorite generated recipes and their chat histories to your personal, persistent SQLite cookbook.
 - **🖨️ Export Options:** Download your recipe as a beautifully formatted PDF.
 - **📊 Nutritional Macros:** Get estimated Calories, Protein, Carbs, and Fat for every generated meal.
+
+## 📸 Screenshots
+
+| Recipe Generator | Interactive Chef Chat |
+| :---: | :---: |
+| ![Generator](./assets/generator.png) | ![Chef Chat](./assets/chat.png) |
+| **Cooking Mode** | **My Cookbook** |
+| ![Cooking Mode](./assets/cooking.png) | ![Cookbook](./assets/cookbook.png) |
+
+*(Create an `assets` folder in your repo and replace the paths above with your actual screenshots!)*
+
+## 🏗️ System Architecture
+
+The following diagram illustrates how user requests are processed by the various AI components in our pipeline:
+
+```mermaid
+graph TD
+    A[User Input: Text/Voice/Image] --> B[Streamlit Frontend]
+    B --> C{LangChain Processing}
+    C --> D[Google Gemini 2.5 Flash API]
+    D --> E[Recipe JSON Data]
+    
+    E --> F[Pollinations.ai Image Gen]
+    E --> G[gTTS Audio Generation]
+    E --> H[xhtml2pdf PDF Generation]
+    
+    F --> I[Beautiful Recipe Card UI]
+    G --> I
+    H --> I
+    
+    I --> J[(SQLite 'My Cookbook' DB)]
+    I --> K[Chef Chat Context Window]
+```
+
+## 💡 Technical Highlights & Challenges Solved
+
+Building Recipe Craft AI presented a few unique engineering challenges that we successfully solved:
+
+1. **Robust JSON Parsing from LLMs:** Ensuring the AI outputs strict, parseable JSON for rendering the recipe cards, even when provided with complex or blurry image inputs. This was solved by utilizing robust prompt engineering and regex-based fallbacks.
+2. **Parallel Task Execution:** Generating Text-to-Speech (audio) and formatting the PDF synchronously caused UI blocking. This was solved by utilizing Python's `concurrent.futures.ThreadPoolExecutor` to run heavy I/O operations simultaneously in the background.
+3. **Handling Multimodal Inputs:** Integrating text, base64-encoded images, and audio transcriptions dynamically into the LangChain pipeline to interact seamlessly with the Gemini 2.5 Flash model.
+4. **State Management & Persistence:** Injecting context into the Chef Chat so that the AI remembers the exact recipe details and user preferences across multiple turns, and persisting this state across Streamlit reruns.
 
 ## 🚀 Getting Started
 
